@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 class Model(ABC):
     def __init__(self, x_train, y_train, x_test, y_test, learning_rate=0.01, epoch_limit=100, time_limit=None):
+        self.weights = None
         self.x_train = x_train
         self.y_train = y_train
         self.x_test = x_test
