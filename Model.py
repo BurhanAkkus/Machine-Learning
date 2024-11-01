@@ -38,3 +38,7 @@ class Model(ABC):
         Modelin genel performansını ve öğrenme süreci hakkında özet bilgileri döndürür.
         """
         pass
+
+    @abstractmethod
+    def evaluate(self):
+        pass
