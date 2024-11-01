@@ -10,14 +10,14 @@ class LinearRegressionModel(Model):
     def train(self):
         num_samples, num_features = self.x_train.shape
         self.weights = np.zeros(num_features + 1)
-        self.x_train = np.c_[np.ones((num_samples, 1)), self.x_train]
+        x_train_with_bias = np.c_[np.ones((num_samples, 1)), self.x_train]
 
         for epoch in range(self.epoch_limit):
-            y_predicted = np.dot(self.x_train, self.weights)
+            y_predicted = np.dot(x_train_with_bias, self.weights)
             error = y_predicted - self.y_train
 
             # Gradients
-            dw = (1 / num_samples) * np.dot(self.x_train.T, error)
+            dw = (1 / num_samples) * np.dot(x_train_with_bias.T, error)
 
             # Update weights and bias
             self.weights -= self.learning_rate * dw
